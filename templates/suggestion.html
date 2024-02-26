@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static',filename='css/output.css')}}" rel="stylesheet">
+    <title>Suggestions</title>
+    <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🔗</text></svg>">
+</head>
+
+<body>
+    <nav
+        class="bg-white dark:bg-gray-900 w-full z-20 top-0  justify-center start-0 border-b border-white dark:border-gray-700">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="cursor-pointer ">
+                    <span class="ml-1 text-4xl font-extrabold">🔗Test</span>
+                    <span class="ml-1 text-4xl font-extrabold text-yellow-400">ai</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+    <main class=" flex flex-row h-screen">
+        <div
+            class="w-1/5 h-full max-h-fit flex flex-col flex-grow mx-auto my-5 max-w-4xl bg-white rounded-lg dark:bg-gray-800 dark:border-gray-700">
+            <div class="drop-shadow-lg pt-5">
+                <a href="/getter_url" class="scale-0 snap-mandatory snap-y">
+                    <img class=" rounded-md rounded-t-lg object-cover h-56 w-auto mx-auto drop-shadow-md "
+                        src="data:image/jpg;base64,{{ prev_img }}" alt="" />
+                </a>
+            </div>
+            <div class="p-5">
+                <a href="/getter_url">
+                    <h1 class="ml-1 mb-5 text-4xl font-extrabold">
+                        Suggestions for
+                        <span class="ml-1 text-4xl font-extrabold text-yellow-400">{{name}}</span>.
+                    </h1>
+                </a>
+                <div class="prose font-mono mb-5 max-w-screen-xl">
+                    {{desc|safe}}
+                </div>
+</body>
+</html>
