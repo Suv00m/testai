@@ -1,7 +1,6 @@
 Flask==3.0.2
 gotrue==2.1.0
 ipython==8.12.3
-Markdown==3.4.4
 Markdown==3.5.2
 ollama==0.1.6
 Pillow==10.2.0
