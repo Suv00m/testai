@@ -18,6 +18,7 @@ from PIL import Image
 from google.generativeai import configure, GenerativeModel
 from gotrue import SyncSupportedStorage
 from werkzeug.local import LocalProxy
+from playwright.sync_api import sync_playwright
 
 # load env
 load_dotenv()
@@ -42,18 +43,29 @@ app.config["SESSION_TYPE"] = "filesystem"
 
 # helper functions
 def launch_browser(web_url):
-    async def screenshot():
-        browser = await launch(
-            handleSIGINT=False, handleSIGTERM=False, handleSIGHUP=False
-        )
-        page = await browser.newPage()
-        await page.goto(web_url)
-        await page.screenshot({"path": "screenshot.png", "fullPage": True})
-        await browser.close()
+    # async def screenshot():
+    #     browser = await launch(
+    #         handleSIGINT=False, handleSIGTERM=False, handleSIGHUP=False
+    #     )
+    #     page = await browser.newPage()
+    #     await page.goto(web_url)
+    #     await page.screenshot({"path": "screenshot.png", "fullPage": True})
+    #     await browser.close()
 
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    asyncio.get_event_loop().run_until_complete(screenshot())
+        
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless = False,handle_sigint=False, handle_sigterm=False, handle_sighup=False, timeout=0)
+
+            page = browser.new_page()
+            page.goto(web_url)
+
+            # Save the screenshot
+            page.screenshot(path="screenshot.png", full_page=True)
+
+    # loop = asyncio.new_event_loop()
+    # asyncio.set_event_loop(loop)
+    # asyncio.get_event_loop().run_until_complete(screenshot())
 
 
 def compress_image(image):
@@ -182,3 +194,5 @@ def getter_url():
     url = session.get("web_url")
     return redirect(url)
 
+# if __name__ == "__main__":
+#     app.run(debug=True)
