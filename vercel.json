@@ -4,7 +4,8 @@
     {
       "src": "./index.py",
       "use": "@vercel/python",
-      "config": { "runtime": "python3.6" }
+      "config": { "runtime": "python3.6" },
+      "buildCommand": "playwright install"
     }
   ],
   "routes": [{ "src": "/(.*)", "dest": "/" }]
