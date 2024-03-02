@@ -8,5 +8,7 @@
     }
   ],
   "routes": [{ "src": "/(.*)", "dest": "/" }],
-  "installCommand": "playwright install"
+  "dependencies": {
+    "playwright": "^1.18.1"
+  }
 }
