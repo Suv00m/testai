@@ -7,8 +7,5 @@
       "config": { "runtime": "python3.6" }
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "/" }],
-  "dependencies": {
-    "playwright": "^1.18.1"
-  }
+  "routes": [{ "src": "/(.*)", "dest": "/" }]
 }
