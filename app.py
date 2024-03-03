@@ -45,7 +45,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 def launch_browser(web_url):
     # async def screenshot():
     #     browser = await launch(
-    #         handleSIGINT=False, handleSIGTERM=False, handleSIGHUP=False
+    #         handleSIGINT=False, handleSIGTERM=False, handleSIGHUP=False,chromium_sandbox=True
     #     )
     #     page = await browser.newPage()
     #     await page.goto(web_url)
